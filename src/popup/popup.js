@@ -10,7 +10,7 @@ chrome.tabs.query({ active: true }, tabs => {
 
 function getDescription(domain) {
   return fetch(
-    `https://rawgit.com/paradise-papers/paradise-papers/master/companies/${domain}.md`
+    `https://raw.githubusercontent.com/paradise-papers/paradise-papers/master/companies/${domain}.md`
   )
     .then(response => {
       switch (response.status) {

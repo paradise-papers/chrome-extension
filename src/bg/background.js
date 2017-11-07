@@ -24,7 +24,7 @@ function updateIcon(url) {
 
 function getList() {
   return fetch(
-    'https://rawgit.com/paradise-papers/paradise-papers/master/companies.json'
+    'https://raw.githubusercontent.com/paradise-papers/paradise-papers/master/companies.json'
   )
     .then(response => {
       if (response.status !== 200) {
