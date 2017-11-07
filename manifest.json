@@ -1,0 +1,25 @@
+{
+  "name": "paradise-papers",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Paradise papers",
+  "homepage_url": "https://www.github.com/paradise-papers",
+  "icons": {
+    "16": "icons/tropics-16.png",
+    "48": "icons/tropics-48.png",
+    "128": "icons/tropics-128.png",
+    "512": "icons/tropics-512.png"
+  },
+  "permissions": ["<all_urls>", "tabs"],
+  "default_locale": "en",
+  "background": {
+    "scripts": ["src/bg/background.js"],
+    "persistent": false
+  },
+  "options_page": "src/options/index.html",
+  "browser_action": {
+    "default_icon": "icons/tropics-39.png",
+    "default_title": "browser action demo",
+    "default_popup": "src/popup/index.html"
+  }
+}
