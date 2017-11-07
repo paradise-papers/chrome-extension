@@ -1,20 +1,21 @@
 const promise = getList();
 
-chrome.tabs.onUpdated.addListener((tabID, info, tab) => {
-  updateIcon(tab.url);
+chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
+  updateIcon(tab.url, tabId);
 });
 
 chrome.tabs.onActivated.addListener(() => {
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
-    const url = tabs[0].url;
-    updateIcon(url);
+    const { url, id } = tabs[0];
+    updateIcon(url, id);
   });
 });
 
-function updateIcon(url) {
+function updateIcon(url, tabId) {
   promise.then(domains => {
     const domain = getDomain(url);
     chrome.browserAction.setIcon({
+      tabId,
       path: domains.includes(domain)
         ? './icons/tropics-red-39.png'
         : './icons/tropics-green-39.png'
