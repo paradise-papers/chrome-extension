@@ -13,13 +13,11 @@ chrome.tabs.onActivated.addListener(() => {
 
 function updateIcon(url) {
   promise.then(domains => {
-    const { hostname } = new URL(url);
-    const domain = hostname.replace(/^www\./, '');
-
+    const domain = getDomain(url);
     chrome.browserAction.setIcon({
       path: domains.includes(domain)
-        ? './icons/criminal-39.png'
-        : './icons/tropics-39.png'
+        ? './icons/tropics-red-39.png'
+        : './icons/tropics-green-39.png'
     });
   });
 }
@@ -41,4 +39,9 @@ function getList() {
     .catch(err => {
       console.log('Fetch Error :-S', err);
     });
+}
+
+function getDomain(url) {
+  const { hostname } = new URL(url);
+  return hostname.replace(/^www\./, '');
 }
